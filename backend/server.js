@@ -9,7 +9,13 @@ const authRoutes = require("./routes/authRoutes");
 const noteRoutes = require("./routes/noteRoutes");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: ["https://todo-app-git-main-luonghas-projects.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
